@@ -1,0 +1,23 @@
+public class Main {
+    public static void main(String[] args) {
+
+        //for the second code
+        String[] firstNames = {"hamza", "hamza1", "hamza2", "hamza3", "hamza4", "hamza5", "hamza6", "hamza7", "hamza8", "hamza9"};
+        String[] lastNames = {"asif", "asif1", "asif2", "asif3", "asif4", "asif15", "asif16", "asif17", "asif18", "asif19"};
+        Student[] students = new Student[20];
+
+        for (int i = 0; i < 20; i++) {
+            String[] name = Student.getRandomName(firstNames, lastNames);
+            students[i] = new Student(name[0], name[1]);
+        }
+
+        for (Student s : students){
+            System.out.println(s.getDetails());
+        }
+        System.out.println("the best student" + Student.getBestStudent(students));
+
+
+
+
+    }
+}
