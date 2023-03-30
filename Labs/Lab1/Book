@@ -1,0 +1,40 @@
+/*
+Create a class called ”Book” that has the following properties:
+• Title (string)
+• Author (string)
+• ISBN (string)
+• Number of pages (int)
+Create a constructor that initializes the properties of the book, and create a method called “summary” that
+returns a string containing the title, author, ISBN, and number of pages of the book.
+Create a main method that creates an object of the Book class and sets its properties using the constructor.
+Then, call the summary method and print the result.
+ */
+
+public class Book {
+    public String Title;
+    public String Author;
+    public String ISBN;
+    public int Number_of_pages;
+
+    public Book(String Title, String Author, String ISBN, int Number){
+        this.Title = Title;
+        this.Author = Author;
+        this.ISBN = ISBN;
+        this.Number_of_pages = Number;
+
+    }
+    public String Summary(){
+        return "Make: " + Title + "\nAuthor: " + Author + "\nISBN: " + ISBN + "\nNumber of Pages: " + Number_of_pages;
+
+    }
+
+
+
+
+    public static void main(String[] args) {
+        Book book1 = new Book("Harry Potter and the Sorcerer ’s Stone", "J.K. Rowling", "1234567890", 309);
+
+        System.out.println(book1.Summary());
+    }
+}
+
