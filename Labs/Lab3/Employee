@@ -1,0 +1,139 @@
+public class Employee {
+    private int hours;
+    private double salary;
+    private int vacationDays;
+    private String vacationForm;
+
+    public Employee(){
+        this.hours = 40;
+        this.salary = 40000;
+        this.vacationDays = 10;
+        this.vacationForm = "yellow";
+    }
+
+    public int getHours(){
+        return hours;
+    }
+    public double getSalary() {
+        return salary;
+    }
+
+    public int getVacationDays() {
+        return vacationDays;
+    }
+
+    public String getVacationForm() {
+        return vacationForm;
+    }
+}
+
+public class Janitor extends Employee{
+
+    public Janitor(){
+
+    }
+    public int getHours(){
+        return super.getHours()*2;
+    }
+    public double getSalary() {
+        return super.getSalary() - 10000;
+    }
+    public int getVacationDays() {
+        return super.getVacationDays()/2;
+    }
+
+    public void clean(){
+        System.out.println("Working for the man.");
+    }
+}
+
+public class Lawyer extends Employee{
+
+    public Lawyer(){
+
+    }
+
+    public String getVacationForm(){
+        return "pink";
+    }
+    public void sue(){
+        System.out.println("I will see you in court");
+    }
+}
+
+public class LegalSecretary extends Secretary{
+
+    public LegalSecretary(){
+
+    }
+
+    public double getSalary() {
+        return super.getSalary() + 5000;
+    }
+
+    public void fileLegalBriefs(){
+        System.out.println("I could file all day");
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Lawyer:");
+        Lawyer lawyer = new Lawyer();
+        System.out.println("Vacation Days: " + lawyer.getVacationDays());
+        System.out.println("Vacation Form: " + lawyer.getVacationForm());
+        lawyer.sue();
+
+        System.out.println();
+
+        System.out.println("Secretary:");
+        Secretary secretary = new Secretary();
+        secretary.takeDictation("abc xyz dictation");
+
+        System.out.println();
+
+        System.out.println("Legal Secretary: ");
+        LegalSecretary legal_sec = new LegalSecretary();
+        System.out.println("Salary: " + legal_sec.getSalary());
+        legal_sec.fileLegalBriefs();
+
+        System.out.println();
+
+        System.out.println("Marketer");
+        Marketer marketer = new Marketer();
+        System.out.println("Salary: " + marketer.getSalary());
+        marketer.advertise();
+
+        System.out.println();
+
+        System.out.println("Janitor: ");
+        Janitor janitor = new Janitor();
+        System.out.println("Hours: " + janitor.getHours());
+        System.out.println("Salary: " + janitor.getSalary());
+        System.out.println("Vacation Days: " + janitor.getVacationDays());
+    }
+}
+public class Marketer extends Employee{
+
+    public Marketer(){
+
+    }
+    public double getSalary() {
+        return super.getSalary() + 10000;
+    }
+
+    public void advertise(){
+        System.out.println("Act now, while supplies last!");
+    }
+}
+
+public class Secretary extends Employee{
+
+    public Secretary(){
+
+    }
+
+    public void takeDictation(String dictation){
+        System.out.println(dictation);
+    }
+}
