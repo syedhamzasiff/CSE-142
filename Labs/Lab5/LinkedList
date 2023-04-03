@@ -1,0 +1,157 @@
+class LinkedList {
+    Node head;
+
+    public void append(int data){
+        if(head == null){
+            head = new Node(data);
+            return;
+        }
+        Node current = head;
+        while(current.next != null){
+            current  = current.next;
+        }
+        current.next = new Node(data);
+    }
+
+    public void remove(int data) {
+        if (head==null) {
+            return;
+        }
+        if (head.data == data) {
+            head = head.next;
+            System.out.println("removed");
+            return;
+        }
+        Node current = head;
+        while (current.next != null) {
+            if (current.next.data == data) {
+                current.next = current.next.next;
+                return;
+            }
+            current = current.next;
+        }
+    }
+
+    public void add(int data, int index) {
+        Node newNode = new Node(data);
+        newNode.data = data;
+        newNode.next = null;
+
+        if(index < 1) {
+            System.out.println("The node doesnt exist");
+
+        } else if (index == 1) {
+            newNode.next = head;
+            head = newNode;
+
+        } else {
+            Node temp;
+            temp = head;
+            for(int i = 1; i < index-1; i++) {
+                if(temp != null) {
+                    temp = temp.next;
+                }
+            }
+            if(temp != null) {
+                newNode.next = temp.next;
+                temp.next = newNode;
+            } else {
+                System.out.print("The previous node is null.");
+            }
+        }
+    }
+
+    public void removeAt(int index) {
+        if (head == null) {
+            System.out.println("List is empty");
+        } else if (index == 0) {
+            head = head.next;
+        } else {
+            Node current = head;
+            int currentIndex = 0;
+            while (current.next != null && currentIndex < index - 1) {
+                current = current.next;
+                currentIndex++;
+            }
+            if (current.next == null) {
+                return;
+            } current.next = current.next.next;
+        }
+    }
+
+    public void removeAll(int data) {
+        if (head == null) {
+            return;
+        }
+        while (head != null && head.data == data) {
+            head = head.next;
+        }
+
+        Node current = head;
+        while (current != null && current.next != null) {
+            if (current.next.data == data) {
+                current.next = current.next.next;
+            } else {
+                current = current.next;
+            }
+        }
+    }
+
+    public void extractASCII(String str) {
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            int asciiValue = (int) ch;
+            this.append(asciiValue);
+        }
+    }
+
+    public String retrieveASCII() {
+        StringBuilder str= new StringBuilder();
+        Node current = head;
+        while (current != null) {
+            char c = (char) current.data;
+            str.append(c);
+            current = current.next;
+        }
+        return str.toString();
+    }
+
+    public static void printList(LinkedList list) {
+        Node currNode = list.head;
+        System.out.print("LinkedList: ");
+        while (currNode != null) {
+            System.out.print(currNode.data + " ");
+            currNode = currNode.next;
+        }
+    }
+
+    //lab 5
+    public void reverseList() {
+        if (head == null || head.next == null) {
+            return;
+        }
+        Node prev = head;
+        Node current = head.next;
+        while (current != null) {
+            Node nextNode = current.next;
+            current.next = prev;
+            prev = current;
+            current = nextNode;
+        }
+        head.next = null;
+        head = prev;
+    }
+
+
+    public void removeDuplicate() {
+        Node current = head;
+        while (current != null) {
+            Node nextNode = current;
+            while (nextNode.next != null) {
+                if (nextNode.next.data == current.data) {
+                    nextNode.next = nextNode.next.next;
+                } else nextNode = nextNode.next;
+            } current = current.next;
+        } return;
+    }
+}
