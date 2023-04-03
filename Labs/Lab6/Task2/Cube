@@ -1,0 +1,26 @@
+public class Cube extends Cuboid{
+
+    public Cube(int numShapes, int id, double length) {
+        super(numShapes, id, length, length, length);
+    }
+
+    @Override
+    double getVolume() {
+        return super.getVolume();
+    }
+
+    @Override
+    double getSurface() {
+        return super.getSurface();
+    }
+
+    @Override
+    String getShapeType() {
+        return "Cube";
+    }
+
+    @Override
+    public String toString() {
+        return "Cube{}";
+    }
+}
